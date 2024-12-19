@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 	@Entity // Annotate class as entity
 	public class Book {
 		@Id // Annotate id as primary key
-		@GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-generate id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)// Auto-generate id
+		// Day 0 topics: Primitive
 		private Long id;
 		private String title;
 		private String author;

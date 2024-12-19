@@ -7,12 +7,24 @@ import jakarta.persistence.*;
 		@Id // Annotate id as primary key
 		@GeneratedValue(strategy = GenerationType.IDENTITY)// Auto-generate id
 		// Day 0 topics: Primitive
+		
+		//private variable and public is access modifier
 		private Long id;
 		private String title;
 		private String author;
 		private Double price;
 		
-		// Getter and Setter
+		// parameterized constructor for books Class
+		public Book(String title, String author, Double price) {
+			this.title = title;
+			this.author = author;
+			this.price = price;
+		}
+		
+		
+		
+		
+		// Getter and Setter for encapsulation
 		public Long getId() {
 			return id;
 		}

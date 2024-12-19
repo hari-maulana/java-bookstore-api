@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController // anotasi class sebagai rest controller
@@ -27,6 +28,32 @@ public class BookController {
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
+	
+	// Day 0 topics: Control flow
+	// filter book
+	@GetMapping("/filter/{criteria}")
+	public List<Book> filterBooks(@PathVariable String criteria) {
+		List<Book> books = bookRepository.findAll();
+		switch (criteria.toLowerCase()) {
+			case "expensive":
+				return books.stream().filter(book -> book.getPrice() > 50.0).toList();
+			case "cheap":
+				return books.stream().filter(book -> book.getPrice() <= 50.0).toList();
+			default: return books;
+		}
+	}
+	
+	// Day 0 topics: loops
+	@GetMapping("/titles")
+	public List<String> getAllTitles() {
+		List<Book> books = bookRepository.findAll();
+		List<String> titles = new ArrayList<>();
+		for (Book book : books) {
+			titles.add(book.getTitle());
+		}
+		return titles;
+	}
+	
 	
 	// add book
 	@PostMapping

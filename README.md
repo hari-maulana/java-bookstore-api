@@ -35,7 +35,7 @@ src
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
+   git clone https://git.voltras.net/hari/api-crud-bookstore.git
    cd bookstore
    ```
 

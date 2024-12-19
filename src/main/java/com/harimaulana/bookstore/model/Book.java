@@ -14,6 +14,10 @@ import jakarta.persistence.*;
 		private String author;
 		private Double price;
 		
+		//default constructor
+		public Book() {
+		}
+		
 		// parameterized constructor for books Class
 		public Book(String title, String author, Double price) {
 			this.title = title;

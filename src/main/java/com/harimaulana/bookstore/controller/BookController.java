@@ -1,5 +1,6 @@
 package com.harimaulana.bookstore.controller;
 
+import com.harimaulana.bookstore.exception.BookNotFoundException;
 import com.harimaulana.bookstore.model.Book;
 import com.harimaulana.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,13 @@ public class BookController {
 	}
 	
 	// get book by id
-	@GetMapping("/{id}")
-	public ResponseEntity<Book> getBookById(@PathVariable Long id) {
-        return bookRepository.findById(id)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
-    }
+	 @GetMapping("/{id}")
+	    public ResponseEntity<Book> getBookById(@PathVariable Long id) throws BookNotFoundException {
+	        return bookRepository.findById(id)
+	            .map(ResponseEntity::ok)
+	            .orElseThrow(() -> new BookNotFoundException("Book with ID " + id + " not found."));
+	    }
+
 	
 	// Day 0 topics: Control flow
 	// filter book

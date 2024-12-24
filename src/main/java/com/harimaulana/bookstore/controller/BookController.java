@@ -64,7 +64,7 @@ public class BookController {
 	}
 	
 	// update book
-	@PutMapping("/{id}")
+	@PutMapping("/{id}") // map the http request
 	 public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
         return bookRepository.findById(id).map(book -> {
             book.setTitle(bookDetails.getTitle());
